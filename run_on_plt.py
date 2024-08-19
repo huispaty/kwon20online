@@ -13,6 +13,7 @@ from threading import Thread
 CHUNK = 512
 FORMAT = pyaudio.paInt16
 CHANNELS = pyaudio.PyAudio().get_default_input_device_info()['maxInputChannels']
+print('channels: ', CHANNELS)
 RATE = 16000
 
 def get_buffer_and_transcribe(model, q):
@@ -26,6 +27,7 @@ def get_buffer_and_transcribe(model, q):
                 decoded = decoded.reshape(CHANNELS, -1)
                 decoded = np.mean(decoded, axis=0)
             frame_output = transcriber.inference(decoded)
+            print(frame_output)
             q.put(frame_output)
 
 def draw_plot(q):
@@ -71,9 +73,9 @@ def main(model_file):
     print("* recording")
     t1 = Thread(target=get_buffer_and_transcribe, name=get_buffer_and_transcribe, args=(model, q))
     t1.start()
-    # print('model is running')
+    print('model is running')
     draw_plot(q)
-    # print("* done recording")
+    print("* done recording")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

@@ -21,7 +21,7 @@ Q = queue.Queue()
 def home():
     # args = Args()
     # model = load_model(args)
-    model = load_model('model-180000.pt')
+    model = load_model('ckpts/model-180000.pt')
     global Q
     t1 = Thread(target=get_buffer_and_transcribe, name=get_buffer_and_transcribe, args=(model, Q))
     t1.start()
