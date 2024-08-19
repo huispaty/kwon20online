@@ -77,7 +77,7 @@ def main(model_file):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_file', type=str, default='model-180000.pt')
+    parser.add_argument('--model_file', type=str, default='ckpts/model-180000.pt')
     args = parser.parse_args()
 
     main(args.model_file)
