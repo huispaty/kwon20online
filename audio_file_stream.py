@@ -7,9 +7,9 @@ import numpy as np
 import librosa
 import queue
 
-CHANNELS = 2 if sys.platform != 'darwin' else 1
-RATE = 16000
-CHUNK = 512
+# CHANNELS = 2 if sys.platform != 'darwin' else 1
+# RATE = 16000
+# CHUNK = 512
 
 class AudioFileStream: # librosa
     def __init__(self, file_path, channels, rate, chunk_size):
