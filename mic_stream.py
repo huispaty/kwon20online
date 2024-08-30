@@ -24,7 +24,7 @@ class MicrophoneStream(object):
         # open microphone in 16-bit
         # use _fill_buffer as callback : call when the buffer is filled
         self._audio_stream = self._audio_interface.open(
-            format=pyaudio.paInt16,
+            format=pyaudio.paInt16, # mic streaming width = 2
             channels=self._channels, rate=self._rate,
             input=True, frames_per_buffer=self._chunk,
             stream_callback=self._fill_buffer,
