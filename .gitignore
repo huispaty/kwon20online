@@ -2,5 +2,5 @@
 *.pyc
 
 ckpts/*
-ph*
 out/*
+ph*
