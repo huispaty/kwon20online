@@ -10,9 +10,9 @@ import torch as th
 import torch.nn.functional as F
 import numpy as np
 
-from autoregressive import models
-from autoregressive.mel import MelSpectrogram
-from autoregressive.constants import *
+from .autoregressive import models
+from .autoregressive.mel import MelSpectrogram
+from .autoregressive.constants import *
 
 from time import time
 
