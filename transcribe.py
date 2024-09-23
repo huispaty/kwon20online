@@ -108,7 +108,16 @@ class OnlineTranscriber:
             # acoustic_out = self.model.acoustic_model(self.mel_buffer.transpose(-1, -2))
             language_out, self.hidden = self.model.lm_model_step(acoustic_out, self.hidden, self.prev_output)
             # language_out, self.hidden = self.model.lm_model_step(acoustic_out[:,3:4,:], self.hidden, self.prev_output)
-            language_out[0,0,:,3:5] *= 2
+            
+            # print('language_out.shape:', language_out.shape) # 1, 1, 88, 5 
+            # language_out[-1] == the state of the note
+            # 0: off
+            # 1: offset
+            # 2: on
+            # 3: onset
+            # 4: re-onset.
+            
+            language_out[0,0,:,3:5] *= 1.5 # additional weight for onset and re-onset
             self.prev_output = language_out.argmax(dim=3)
             # time_list.append(time())
             # self.prev_output = language_out.argmax(dim=1)
